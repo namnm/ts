@@ -1,0 +1,8 @@
+{
+  "exec": "node src-backend",
+  "delay": 300,
+  "quiet": true,
+  "watch": ["src/types.tsx", "src-backend"],
+  "ext": "js,tsx",
+  "signal": "SIGTERM"
+}
