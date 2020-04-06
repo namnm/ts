@@ -1,8 +1,8 @@
 const getTimeStamp = (timezone: number) => {
-  let date = new Date();
+  let date = new Date()
   if (timezone !== undefined) {
-    const d = timezone * 60 + date.getTimezoneOffset();
-    date = new Date(date.getTime() + d * 60 * 1000);
+    const d = timezone * 60 + date.getTimezoneOffset()
+    date = new Date(date.getTime() + d * 60 * 1000)
   }
   return [
     date.getFullYear(),
@@ -13,21 +13,21 @@ const getTimeStamp = (timezone: number) => {
     date.getSeconds(),
   ]
     .map((n, i) => {
-      let s = '';
+      let s = ''
       if (n < 10) {
-        s += '0';
+        s += '0'
       }
-      s += n;
+      s += n
       if (i < 2) {
-        s += '/';
+        s += '/'
       } else if (i === 2) {
-        s += ' ';
+        s += ' '
       } else if (i < 5) {
-        s += ':';
+        s += ':'
       }
-      return s;
+      return s
     })
-    .join('');
-};
+    .join('')
+}
 
-export default getTimeStamp;
+export default getTimeStamp

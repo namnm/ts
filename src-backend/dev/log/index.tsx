@@ -1,5 +1,5 @@
-import Log from './Log';
+import Log from './Log'
 
-const log = new Log();
+const log = new Log()
 
-export default log;
+export default log

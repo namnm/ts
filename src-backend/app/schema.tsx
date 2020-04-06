@@ -1,10 +1,10 @@
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from 'graphql-tools'
 
 const rootValue = {
   Query: {
     hello: () => 'world',
   },
-};
+}
 
 const schema = makeExecutableSchema({
   typeDefs: `
@@ -13,7 +13,7 @@ const schema = makeExecutableSchema({
     }
   `,
   resolvers: rootValue,
-});
+})
 
-export { rootValue };
-export default schema;
+export { rootValue }
+export default schema

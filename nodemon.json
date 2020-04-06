@@ -1,8 +1,8 @@
 {
-  "exec": "yarn tsc && node src-backend",
+  "exec": "node src-backend",
   "delay": 300,
   "quiet": true,
-  "watch": ["src/types.tsx", "src-backend"],
+  "watch": ["src/types", "src-backend"],
   "ext": "js,tsx",
   "signal": "SIGTERM"
 }

@@ -1,12 +1,12 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'fs'
+import path from 'path'
 
-import log from './log';
+import log from './log'
 
-const dotenvPath = path.join(__dirname, '../../.env');
+const dotenvPath = path.join(__dirname, '../../.env')
 
 const checkDotenvFile = () => {
-  log.fatal(`Missing ${dotenvPath}`, !fs.existsSync(dotenvPath));
-};
+  log.fatal(`Missing ${dotenvPath}`, !fs.existsSync(dotenvPath))
+}
 
-checkDotenvFile();
+checkDotenvFile()

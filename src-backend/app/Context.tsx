@@ -1,11 +1,11 @@
-import { IncomingMessage, ServerResponse } from 'http';
+import { IncomingMessage, ServerResponse } from 'http'
 
 import {
   getLoginCookie,
   removeLoginCookie,
   setLoginCookie,
-} from './Context-loginCookie';
-import { throwContextError } from './ContextError';
+} from './Context-loginCookie'
+import { throwContextError } from './ContextError'
 
 class Context {
   constructor(
@@ -13,11 +13,11 @@ class Context {
     protected res: Readonly<ServerResponse>,
   ) {}
 
-  throw = throwContextError;
+  throw = throwContextError
 
-  setLoginCookie = setLoginCookie;
-  getLoginCookie = getLoginCookie;
-  removeLoginCookie = removeLoginCookie;
+  setLoginCookie = setLoginCookie
+  getLoginCookie = getLoginCookie
+  removeLoginCookie = removeLoginCookie
 }
 
-export default Context;
+export default Context

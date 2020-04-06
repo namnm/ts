@@ -1,0 +1,8 @@
+require('dotenv/config')
+require('./src-backend/babel-register')
+
+module.exports = {
+  config: 'sequelize/config.tsx',
+  'migrations-path': 'sequelize/migrations',
+  'seeders-path': 'sequelize/seeders',
+}

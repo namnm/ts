@@ -1,4 +1,4 @@
-import { cyan, magenta, red, yellow } from 'colors/safe';
+import { cyan, magenta, red, yellow } from 'colors/safe'
 
 const labelMap = {
   debug: '[DEBUG]',
@@ -6,7 +6,7 @@ const labelMap = {
   warn: ' [WARN]',
   error: '[ERROR]',
   fatal: '[FATAL]',
-};
+}
 
 const colorsFnMap = {
   debug: (str: string) => str,
@@ -14,10 +14,10 @@ const colorsFnMap = {
   warn: yellow,
   error: red,
   fatal: magenta,
-};
+}
 
-type Level = 'debug' | 'info' | 'warn' | 'error' | 'fatal';
-const getLabelByLevel = (lv: Level) => labelMap[lv];
-const getColorFnByLevel = (lv: Level) => colorsFnMap[lv];
+type Level = 'debug' | 'info' | 'warn' | 'error' | 'fatal'
+const getLabelByLevel = (lv: Level) => labelMap[lv]
+const getColorFnByLevel = (lv: Level) => colorsFnMap[lv]
 
-export { Level, getLabelByLevel, getColorFnByLevel };
+export { Level, getLabelByLevel, getColorFnByLevel }

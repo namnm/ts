@@ -3,12 +3,12 @@ import { Column, Table } from 'sequelize-typescript'
 import BaseModel from '../app/BaseModel'
 
 @Table
-class User extends BaseModel<User> {
+class Email extends BaseModel<Email> {
   @Column
-  primaryEmailId!: number
+  email!: string
 
   @Column
-  password!: string
+  isVerified!: boolean
 }
 
-export default User
+export default Email

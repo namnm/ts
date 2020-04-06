@@ -1,10 +1,10 @@
-import compression from 'compression';
-import express from 'express';
+import compression from 'compression'
+import express from 'express'
 
-import graphqlHandler from './app-graphqlHandler';
+import graphqlHandler from './app-graphqlHandler'
 
-const app = express();
+const app = express()
 
-app.use('/graphql', compression(), graphqlHandler);
+app.use('/graphql', compression(), graphqlHandler)
 
-export default app;
+export default app

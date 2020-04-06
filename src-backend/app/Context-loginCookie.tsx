@@ -1,19 +1,19 @@
-import cookie from 'cookie';
+import cookie from 'cookie'
 
-import { loginCookieExpires, loginCookieKey, loginHeaderType } from '../config';
-import Context from './Context';
+import { loginCookieExpires, loginCookieKey, loginHeaderType } from '../config'
+import Context from './Context'
 
 function getLoginCookie(this: Context) {
-  const h = this.req.headers;
-  const c = cookie.parse(h.cookie || '');
+  const h = this.req.headers
+  const c = cookie.parse(h.cookie || '')
   if (loginCookieKey in c) {
-    return c[loginCookieKey];
+    return c[loginCookieKey]
   }
-  const a = h.authorization;
+  const a = h.authorization
   if (a && a.startsWith(loginHeaderType)) {
-    return a.replace(loginHeaderType, '');
+    return a.replace(loginHeaderType, '')
   }
-  return '';
+  return ''
 }
 
 function setLoginCookie(this: Context, loginToken: string) {
@@ -21,8 +21,8 @@ function setLoginCookie(this: Context, loginToken: string) {
     httpOnly: true,
     expires: new Date(Date.now() + loginCookieExpires),
     maxAge: loginCookieExpires / 1000,
-  });
-  this.res.setHeader('Set-Cookie', c);
+  })
+  this.res.setHeader('Set-Cookie', c)
 }
 
 function removeLoginCookie(this: Context) {
@@ -30,8 +30,8 @@ function removeLoginCookie(this: Context) {
     httpOnly: true,
     expires: new Date(Date.now() - 1000),
     maxAge: -1,
-  });
-  this.res.setHeader('Set-Cookie', c);
+  })
+  this.res.setHeader('Set-Cookie', c)
 }
 
-export { getLoginCookie, setLoginCookie, removeLoginCookie };
+export { getLoginCookie, setLoginCookie, removeLoginCookie }
