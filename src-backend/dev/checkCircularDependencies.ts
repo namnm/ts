@@ -12,8 +12,8 @@ const removeSrcFromFileName = (fileName: string) =>
 
 const resolvedFileNameMap: {
   [parentFileName: string]: {
-    [fileName: string]: boolean;
-  };
+    [fileName: string]: boolean
+  }
 } = {}
 
 const oldRequireFn = Module.prototype.require

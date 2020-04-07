@@ -14,6 +14,6 @@ export const sequelizeConfig = {
   },
 }
 
-export const loginCookieKey = process.env.LOGIN_COOKIE_KEY
-export const loginCookieExpires = process.env.LOGIN_COOKIE_EXPIRES
-export const loginHeaderType = process.env.LOGIN_HEADER_TYPE
+export const loginCookieKey = process.env.LOGIN_COOKIE_KEY as string
+export const loginCookieExpires = Number(process.env.LOGIN_COOKIE_EXPIRES)
+export const loginHeaderType = process.env.LOGIN_HEADER_TYPE as string

@@ -1,6 +1,6 @@
 import Sequelize, { QueryInterface } from 'sequelize'
 
-import { baseModelConfig } from '../../src-backend/app/BaseModel'
+import baseModel from '../baseModel'
 
 export default {
   up: async (queryInterface: QueryInterface) => {
@@ -13,7 +13,7 @@ export default {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ...baseModelConfig,
+      ...baseModel,
     })
   },
   down: async (queryInterface: QueryInterface) => {

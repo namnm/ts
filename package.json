@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "license": "UNLICENSED",
   "scripts": {
-    "pret": "eslint --fix --ignore-path=.gitignore --ext=.js,.tsx . && prettier --loglevel=error --ignore-path=.gitignore --write \"**/*.{js,tsx,json,md}\"",
-    "drop": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
-    "postinstall": "node sequelize/fix-cli-typescript.js"
+    "backend": "nodemon",
+    "tsc": "tsc --watch --noEmit --preserveWatchOutput false",
+    "pret": "eslint --fix --ignore-path=.gitignore --ext=.js,.ts,.tsx . && prettier --loglevel=error --ignore-path=.gitignore --write \"**/*.{js,ts,tsx,json,md}\"",
+    "drop": "node -r ./register ./sequelize/dropGuard && sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "postinstall": "node -r ./register ./sequelize/cliFixTs"
   },
   "dependencies": {
     "colors": "1.4.0",
@@ -60,8 +62,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,tsx}": "eslint --fix",
-    "*.{js,tsx,json,md}": "prettier --write"
+    "*.{js,ts,tsx}": "eslint --fix",
+    "*.{js,ts,tsx,json,md}": "prettier --write"
   },
   "typeCoverage": {
     "atLeast": 100,

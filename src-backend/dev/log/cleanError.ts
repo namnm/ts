@@ -30,8 +30,8 @@ const getLocation = (frame: StackFrame) => {
 const cleanError = (err: Error) => {
   let maxFuncLength = 0
   const stacks: {
-    func: string;
-    loc: string;
+    func: string
+    loc: string
   }[] = []
   const frames = (err && parse(err)) || []
   frames.forEach(frame => {

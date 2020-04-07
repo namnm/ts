@@ -1,6 +1,5 @@
 try {
-  require('dotenv/config')
-  require('./babel-register')
+  require('../register')
   if (process.env.NODE_ENV !== 'production') {
     require('./dev/clearConsole')
     require('./dev/checkCircularDependencies')

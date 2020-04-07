@@ -1,5 +1,5 @@
-const { readFileSync, writeFileSync } = require('fs')
-const { join } = require('path')
+import { readFileSync, writeFileSync } from 'fs'
+import { join } from 'path'
 
 // Fix sequelize-cli doesnt support typescript extensions
 // Will be run in the postinstall script in package.json

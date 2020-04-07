@@ -1,35 +1,8 @@
 import Sequelize from 'sequelize'
-import {
-  Column,
-  CreatedAt,
-  DeletedAt,
-  Model,
-  UpdatedAt,
-} from 'sequelize-typescript'
-
-export default class BaseModel<T> extends Model<T> {
-  @Column({ primaryKey: true, autoIncrement: true })
-  id!: number
-
-  @CreatedAt
-  createdAt!: Date
-  @Column
-  createdById!: number
-
-  @UpdatedAt
-  updatedAt?: Date
-  @Column
-  updatedById?: number
-
-  @DeletedAt
-  deletedAt?: Date
-  @Column
-  deletedById?: number
-}
 
 // For quickly spread over migrations
-// Should sync with the above BaseModel class
-export const baseModelConfig = {
+// Should sync with src-backend/app/BaseModel
+export default {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
