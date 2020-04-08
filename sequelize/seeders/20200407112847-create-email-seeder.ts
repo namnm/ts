@@ -41,6 +41,6 @@ export default {
   },
 
   down: (queryInterface: QueryInterface) => {
-    return queryInterface.bulkDelete('Email', null, {})
+    return queryInterface.bulkDelete('Email', {}, {})
   },
 }
