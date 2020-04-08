@@ -15,7 +15,24 @@ export default {
       },
       ...baseModel,
     })
+
+    await queryInterface.addConstraint('User', ['primaryEmailId'], {
+      type: 'foreign key',
+      name: 'User_primaryEmailId_foreignKey',
+      references: {
+        table: 'Email',
+        field: 'id',
+      },
+      onUpdate: 'cascade',
+      onDelete: 'cascade',
+    })
+
+    await queryInterface.addConstraint('User', ['primaryEmailId'], {
+      type: 'unique',
+      name: 'User_primaryEmailId_unique',
+    })
   },
+
   down: async (queryInterface: QueryInterface) => {
     await queryInterface.dropTable('User')
   },
