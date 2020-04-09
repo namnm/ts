@@ -37,6 +37,17 @@ export default {
       onUpdate: 'cascade',
       onDelete: 'cascade',
     })
+
+    await queryInterface.addConstraint('UserInEmail', ['createdById'], {
+      type: 'foreign key',
+      name: 'UserInEmail_createdById_foreignKey',
+      references: {
+        table: 'User',
+        field: 'id',
+      },
+      onUpdate: 'cascade',
+      onDelete: 'cascade',
+    })
   },
 
   down: async (queryInterface: QueryInterface) => {

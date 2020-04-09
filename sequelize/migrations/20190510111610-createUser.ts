@@ -1,3 +1,4 @@
+import { omit } from 'lodash'
 import Sequelize, { QueryInterface } from 'sequelize'
 
 import baseModel from '../baseModel'
@@ -13,7 +14,7 @@ export default {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ...baseModel,
+      ...omit(baseModel, ['createdById']),
     })
 
     await queryInterface.addConstraint('User', ['primaryEmailId'], {

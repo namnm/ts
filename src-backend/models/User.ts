@@ -9,6 +9,9 @@ class User extends BaseModel<User> {
 
   @Column
   password!: string
+
+  @Column
+  createdById = 0
 }
 
 export default User

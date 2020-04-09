@@ -9,6 +9,9 @@ class Email extends BaseModel<Email> {
 
   @Column
   isVerified!: boolean
+
+  @Column
+  createdById = 0
 }
 
 export default Email
