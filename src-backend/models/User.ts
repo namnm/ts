@@ -1,14 +1,20 @@
-import { Column, Table } from 'sequelize-typescript'
+import defineModel from '../-/defineModel'
+import sequelizeToGraphQL from '../-/sequelizeToGraphQL'
+import db, { baseColumns } from '../app/db'
 
-import BaseModel from '../app/BaseModel'
+const User = defineModel(db, 'User', {
+  ...baseColumns,
 
-@Table
-class User extends BaseModel<User> {
-  @Column
-  primaryEmailId!: number
-
-  @Column
-  password!: string
-}
-
+  primaryEmailId: {
+    INTEGER: true,
+  },
+  password: {
+    STRING: true,
+  },
+})
 export default User
+
+export const userSchema = sequelizeToGraphQL(User, {
+  exclude: ['password'],
+  // TODO
+})

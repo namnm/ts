@@ -12,13 +12,15 @@ module.exports = {
   plugins: ['@typescript-eslint', 'import', 'simple-import-sort'],
   rules: {
     quotes: [2, 'single'],
-    'sort-imports': 'off',
+    semi: [2, 'never'],
+    'sort-imports': 0,
     'simple-import-sort/sort': 2,
     'import/first': 2,
     'import/newline-after-import': 2,
     'import/no-duplicates': 2,
     'import/no-extraneous-dependencies': 2,
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/no-use-before-define': 0,
+    '@typescript-eslint/no-var-requires': 0,
   },
 }
