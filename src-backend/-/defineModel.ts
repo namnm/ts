@@ -13,7 +13,7 @@ export default function defineModel<A extends ModelAttributes>(
   name: string,
   attrs: A,
 ) {
-  validateDefineModel(attrs)
+  validateDefineModel(name, attrs)
 
   const attrs0 = Object.entries(attrs).reduce(
     (m, [k, a]: [keyof A, ModelAttributeColumnOptions]) => ({

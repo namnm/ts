@@ -2,7 +2,8 @@ import log from '../dev/log'
 import { ModelAttributes } from './Model'
 import supportedTypes from './supportedTypes'
 
-export default function valdiateDefineModel<A extends ModelAttributes>(
+export default function validateDefineModel<A extends ModelAttributes>(
+  name: string,
   attrs: A,
 ) {
   const supported = Object.keys(supportedTypes)
