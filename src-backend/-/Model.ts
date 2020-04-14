@@ -4,6 +4,15 @@ import {
   ModelCtor as ModelCtor0,
 } from 'sequelize'
 
+import {
+  BooleanType,
+  DateType,
+  FloatType,
+  IntegerType,
+  StringType,
+  TextType,
+} from './supportedTypes'
+
 export default class Model<A extends ModelAttributes> {
   constructor(private m: ModelCtor0<Model0>) {}
 
@@ -42,8 +51,8 @@ export type ToModelType<A extends ModelAttributes> = {
     : never
 }
 
-export type ToAttributes0<T extends ModelAttributes> = {
-  [k in keyof T]: ModelAttributeColumnOptions0
+export type ToAttributes0<A extends ModelAttributes> = {
+  [k in keyof A]: ModelAttributeColumnOptions0
 }
 
 export type ModelAttributes = {
@@ -58,22 +67,3 @@ export interface ModelAttributeColumnOptions
     Partial<StringType>,
     Partial<TextType>,
     Partial<DateType> {}
-
-interface BooleanType {
-  BOOLEAN: boolean
-}
-interface IntegerType {
-  INTEGER: boolean
-}
-interface FloatType {
-  FLOAT: boolean
-}
-interface StringType {
-  STRING: boolean
-}
-interface TextType {
-  TEXT: boolean
-}
-interface DateType {
-  DATE: boolean
-}
