@@ -1,5 +1,5 @@
 import path from 'path'
-import { parse, StackFrame } from 'stack-trace'
+import stacktrace, { StackFrame } from 'stack-trace'
 
 const srcDir = path.join(__dirname, '../../')
 const rootDir = path.join(srcDir, '../')
@@ -33,7 +33,7 @@ const cleanError = (err: Error) => {
     func: string
     loc: string
   }[] = []
-  const frames = (err && parse(err)) || []
+  const frames = (err && stacktrace.parse(err)) || []
   frames.forEach(frame => {
     const loc = getLocation(frame)
     if (!loc) {
