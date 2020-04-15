@@ -1,6 +1,6 @@
 import Sequelize, { QueryInterface } from 'sequelize'
 
-import baseModel from '../baseModel'
+import { baseColumnsForMigration } from '../../src-backend/app/db'
 
 export default {
   up: async (queryInterface: QueryInterface) => {
@@ -13,7 +13,7 @@ export default {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      ...baseModel,
+      ...baseColumnsForMigration,
     })
 
     await queryInterface.addConstraint('Email', ['email'], {
