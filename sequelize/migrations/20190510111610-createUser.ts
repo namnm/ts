@@ -1,6 +1,7 @@
+import { omit } from 'lodash'
 import Sequelize, { QueryInterface } from 'sequelize'
 
-import baseModel from '../baseModel'
+import { baseColumnsForMigration } from '../../src-backend/app/db'
 
 export default {
   up: async (queryInterface: QueryInterface) => {
@@ -13,7 +14,7 @@ export default {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      ...baseModel,
+      ...omit(baseColumnsForMigration, ['createdById']),
     })
 
     await queryInterface.addConstraint('User', ['primaryEmailId'], {

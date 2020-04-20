@@ -1,4 +1,5 @@
-import Model, { ModelAttributes } from './Model'
+import Model from './Model'
+import { ModelAttributes } from './types'
 import validateSequelizeGraphQL from './validateSequelizeGraphQL'
 
 export default function sequelizeToGraphQL<A extends ModelAttributes>(

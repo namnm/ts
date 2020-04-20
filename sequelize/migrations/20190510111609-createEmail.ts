@@ -1,11 +1,12 @@
+import { omit } from 'lodash'
 import Sequelize, { QueryInterface } from 'sequelize'
 
-import baseModel from '../baseModel'
+import { baseColumnsForMigration } from '../../src-backend/app/db'
 
 export default {
   up: async (queryInterface: QueryInterface) => {
     await queryInterface.createTable('Email', {
-      email: {
+      emailAddress: {
         type: Sequelize.STRING,
         allowNull: false,
       },
@@ -13,12 +14,13 @@ export default {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-      ...baseModel,
+
+      ...omit(baseColumnsForMigration, ['createdById']),
     })
 
-    await queryInterface.addConstraint('Email', ['email'], {
+    await queryInterface.addConstraint('Email', ['emailAddress'], {
       type: 'unique',
-      name: 'Email_email_unique',
+      name: 'Email_emailAddress_unique',
     })
   },
 

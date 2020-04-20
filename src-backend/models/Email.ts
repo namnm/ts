@@ -4,19 +4,18 @@ import defineModel from '../-/defineModel'
 import sequelizeToGraphQL from '../-/sequelizeToGraphQL'
 import db, { baseColumns } from '../app/db'
 
-const User = defineModel(db, 'User', {
+const Email = defineModel(db, 'Email', {
   ...omit(baseColumns, ['createdById']),
 
-  primaryEmailId: {
+  emailAddress: {
     INTEGER: true,
   },
-  password: {
-    STRING: true,
+  isVerified: {
+    BOOLEAN: true,
   },
 })
-export default User
+export default Email
 
-export const userSchema = sequelizeToGraphQL(User, {
-  exclude: ['password'],
+export const emailSchema = sequelizeToGraphQL(Email, {
   // TODO
 })

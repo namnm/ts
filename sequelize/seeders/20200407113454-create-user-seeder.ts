@@ -10,19 +10,16 @@ export default {
         {
           primaryEmailId: 1,
           password: hashPassword('123213'),
-          createdById: 0,
           createdAt: '2020-04-02 03:06:49',
         },
         {
           primaryEmailId: 2,
           password: hashPassword('123213'),
-          createdById: 0,
           createdAt: '2020-04-02 03:06:49',
         },
         {
           primaryEmailId: 3,
           password: hashPassword('123213'),
-          createdById: 0,
           createdAt: '2020-04-02 03:06:49',
         },
       ],

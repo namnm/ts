@@ -1,17 +1,6 @@
-import {
-  Model as Model0,
-  ModelAttributeColumnOptions as ModelAttributeColumnOptions0,
-  ModelCtor as ModelCtor0,
-} from 'sequelize'
+import { Model as Model0, ModelCtor as ModelCtor0 } from 'sequelize'
 
-import {
-  BooleanType,
-  DateType,
-  FloatType,
-  IntegerType,
-  StringType,
-  TextType,
-} from './supportedTypes'
+import { ModelAttributes, ToAttributes0, ToModelType } from './types'
 
 export default class Model<A extends ModelAttributes> {
   constructor(private m: ModelCtor0<Model0>) {}
@@ -34,36 +23,3 @@ export default class Model<A extends ModelAttributes> {
 
   // TODO add other model methods here
 }
-
-export type ToModelType<A extends ModelAttributes> = {
-  [k in keyof A]: A[k] extends BooleanType
-    ? boolean
-    : A[k] extends IntegerType
-    ? number
-    : A[k] extends FloatType
-    ? number
-    : A[k] extends StringType
-    ? string
-    : A[k] extends TextType
-    ? string
-    : A[k] extends DateType
-    ? Date
-    : never
-}
-
-export type ToAttributes0<A extends ModelAttributes> = {
-  [k in keyof A]: ModelAttributeColumnOptions0
-}
-
-export type ModelAttributes = {
-  [name: string]: ModelAttributeColumnOptions
-}
-
-export interface ModelAttributeColumnOptions
-  extends Omit<ModelAttributeColumnOptions0, 'type'>,
-    Partial<BooleanType>,
-    Partial<IntegerType>,
-    Partial<FloatType>,
-    Partial<StringType>,
-    Partial<TextType>,
-    Partial<DateType> {}

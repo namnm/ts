@@ -13,11 +13,11 @@ class Context {
     protected res: Readonly<ServerResponse>,
   ) {}
 
-  throw = throwContextError
+  throw = throwContextError.bind(this)
 
-  setLoginCookie = setLoginCookie
-  getLoginCookie = getLoginCookie
-  removeLoginCookie = removeLoginCookie
+  setLoginCookie = setLoginCookie.bind(this)
+  getLoginCookie = getLoginCookie.bind(this)
+  removeLoginCookie = removeLoginCookie.bind(this)
 }
 
 export default Context
