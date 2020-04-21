@@ -1,9 +1,11 @@
+import { omit } from 'lodash'
+
 import defineModel from '../-/defineModel'
 import sequelizeToGraphQL from '../-/sequelizeToGraphQL'
 import db, { baseColumns } from '../app/db'
 
 const User = defineModel(db, 'User', {
-  ...baseColumns,
+  ...omit(baseColumns, ['createdById']),
 
   primaryEmailId: {
     INTEGER: true,
