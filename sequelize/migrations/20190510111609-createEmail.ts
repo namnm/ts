@@ -14,7 +14,6 @@ export default {
         type: Sequelize.BOOLEAN,
         allowNull: false,
       },
-
       ...omit(baseColumnsForMigration, ['createdById']),
     })
 
