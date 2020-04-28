@@ -29,8 +29,8 @@ function getFieldType<A extends ModelAttributes>(
       log.fatal(
         `getFieldType: Sequelize type ${type} is not supported, field: ${modelName}.${fieldName}`,
       )
-      //It won't occur
       return undefined
+    //It won't occur
   }
 }
 
@@ -72,5 +72,22 @@ export type SequelizeGraphQLConfig<A extends ModelAttributes> = {
   include?: (keyof A)[]
   exclude?: (keyof A)[]
   virtual?: string[]
+  associations?: ModelAssociation<A>
   // TODO
+}
+
+interface ModelAssociation<A extends ModelAttributes> {
+  hasMany?: ModelHasManyConfig<A>[]
+  belongToMany?: ModelBelongToManyConfig[]
+}
+
+type ModelBelongToManyConfig = {
+  to: string
+  through: string
+  as?: string
+}
+
+type ModelHasManyConfig<A> = {
+  to: string
+  foreignKey: keyof A
 }

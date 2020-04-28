@@ -1,3 +1,5 @@
-import User from './User'
+import User, { userSchema } from './User'
 
-export { User }
+export default { User }
+
+export const modelDefs = { userSchema }
