@@ -81,12 +81,12 @@ export type ModelAttributes = {
   [name: string]: ModelAttributeColumnOptions
 }
 
-export interface ModelAttributeColumnOptions
-  extends Omit<ModelAttributeColumnOptions0, 'type'>,
-    Partial<Nullable>,
-    Partial<BooleanType>,
-    Partial<IntegerType>,
-    Partial<FloatType>,
-    Partial<StringType>,
-    Partial<TextType>,
-    Partial<DateType> {}
+export type ModelAttributeColumnOptions = Partial<Nullable> &
+  (
+    | (Omit<ModelAttributeColumnOptions0, 'type'> & BooleanType)
+    | (Omit<ModelAttributeColumnOptions0, 'type'> & IntegerType)
+    | (Omit<ModelAttributeColumnOptions0, 'type'> & FloatType)
+    | (Omit<ModelAttributeColumnOptions0, 'type'> & StringType)
+    | (Omit<ModelAttributeColumnOptions0, 'type'> & TextType)
+    | (Omit<ModelAttributeColumnOptions0, 'type'> & DateType)
+  )

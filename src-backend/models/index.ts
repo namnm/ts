@@ -1,3 +1,6 @@
 import User from './User'
 
-export { User }
+const models = { User }
+export default models
+
+export type Models = typeof models
