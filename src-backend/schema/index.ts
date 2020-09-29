@@ -1,3 +1,3 @@
 import { userSchema } from '../models/User'
 
-export { userSchema }
+export default { userSchema }

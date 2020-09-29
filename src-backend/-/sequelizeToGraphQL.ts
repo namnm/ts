@@ -1,6 +1,7 @@
 import { ModelAttributeColumnOptions } from 'sequelize'
 
 import log from '../dev/log'
+import genSearch from './genSearch'
 import Model from './Model'
 import { ModelAttributes, supportedTypes } from './types'
 import validateSequelizeGraphQL from './validateSequelizeGraphQL'
@@ -40,32 +41,41 @@ export default function sequelizeToGraphQL<A extends ModelAttributes>(
 ) {
   validateSequelizeGraphQL(m, config)
 
-  return `
-        type ${m.name} {
-          ${Object.entries(m.rawAttributes)
-            .filter(([fieldName]: [keyof A, ModelAttributeColumnOptions]) => {
-              return config.include?.length
-                ? config.include.indexOf(fieldName) >= 0
-                : config.exclude?.length
-                ? config.exclude.indexOf(fieldName) < 0
-                : true
-            })
-            .map(
-              ([fieldName, fieldAttribute]: [
-                keyof A,
-                ModelAttributeColumnOptions,
-              ]) => {
-                return `${fieldName}: ${getFieldType(
-                  m.name,
-                  fieldName,
-                  fieldAttribute.type as keyof typeof supportedTypes,
-                )}${fieldAttribute.allowNull ? '' : '!'}\n`
-              },
-            )
-            .concat(config.virtual || [])
-            .join('')}
-        }
-      `
+  const search = genSearch(m)
+  const typeDef = `
+    type ${m.name} {
+      ${Object.entries(m.rawAttributes)
+        .filter(([fieldName]: [keyof A, ModelAttributeColumnOptions]) => {
+          return config.include?.length
+            ? config.include.indexOf(fieldName) >= 0
+            : config.exclude?.length
+            ? config.exclude.indexOf(fieldName) < 0
+            : true
+        })
+        .map(
+          ([fieldName, fieldAttribute]: [
+            keyof A,
+            ModelAttributeColumnOptions,
+          ]) => {
+            return `${fieldName}: ${getFieldType(
+              m.name,
+              fieldName,
+              fieldAttribute.type as keyof typeof supportedTypes,
+            )}${fieldAttribute.allowNull ? '' : '!'}\n`
+          },
+        )
+        .concat(config.virtual || [])
+        .join('')}
+    }
+    ${search.typeDef}
+  `
+
+  const resolver = search.resolver
+
+  return {
+    typeDef,
+    resolver,
+  }
 }
 
 export type SequelizeGraphQLConfig<A extends ModelAttributes> = {

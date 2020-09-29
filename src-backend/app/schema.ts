@@ -1,8 +1,7 @@
 import { GraphQLDateTime } from 'graphql-iso-date'
-import { makeExecutableSchema } from 'graphql-tools'
-import { omit } from 'lodash'
+import { IResolvers, makeExecutableSchema } from 'graphql-tools'
 
-import * as schemaModels from '../schema'
+import schemaModels from '../schema'
 
 const rootValue = {
   Query: {
@@ -11,7 +10,10 @@ const rootValue = {
   DateTime: () => GraphQLDateTime,
 }
 
-const schemas = Object.values(omit(schemaModels, ['__esModule'])).filter(m => m)
+const schemas = Object.values(schemaModels).filter(m => m)
+
+const typeDefs = schemas.map(s => s.typeDef)
+const resolvers: IResolvers<any, any>[] = schemas.map(s => s.resolver)
 
 const schema = makeExecutableSchema({
   typeDefs: `
@@ -19,9 +21,9 @@ const schema = makeExecutableSchema({
     type Query {
       hello: String!
     }
-    ${schemas}
+    ${typeDefs}
   `,
-  resolvers: rootValue,
+  resolvers: [rootValue, ...resolvers],
 })
 
 export { rootValue }
